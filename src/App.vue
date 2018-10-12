@@ -16,6 +16,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-sm-3 menu">
+            {{ menuList }}
             <ul class="list-group">
               <li class="list-group-item">Product</li>
               <li class="list-group-item">Cart</li>
@@ -23,7 +24,7 @@
             </ul>
           </div>
           <div class="col col-sm-9">
-
+            <router-view></router-view>
           </div>
         </div>
       </div>
@@ -32,8 +33,13 @@
 </template>
 
 <script>
-export default {
 
+export default {
+  computed: {
+    menuList() {
+      return this.$store.getters['products/items'];
+    }    
+  }
 }
 </script>
 
