@@ -68,24 +68,24 @@
   .list-group-item.active a {
     color: inherit;
   }
-  .slide-enter {
+ 
+  /* .slide-enter {}  */
 
-  }
   .slide-enter-active {
     animation: slideIn .5s;
   }
+/*   
   .slide-enter-to {
 
   }
   .slide-leave {
 
-  }
+  } 
+  */
   .slide-leave-active {
     animation: slideOut .5s;
   }
-  .slide-leave-to {
-
-  }
+  /* .slide-leave-to {} */
 
   @keyframes slideIn {
     from {

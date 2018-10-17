@@ -3,7 +3,8 @@
         <h1>Products</h1>
         <div class="row">
             <div class="col col-sm-4" 
-                 v-for="product in products"
+                 v-for="(product, index) in products"
+                 :key="index"
                  >
                  <router-link tag="h3"
                               :to="'/products/' + product.id_product">
