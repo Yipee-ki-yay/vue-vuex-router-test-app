@@ -1,17 +1,17 @@
 export default {
     namespaced: true,
-    state: {
+    state     : {
         items: [
             {
-                url: '/products',
+                url : '/products',
                 text: 'Products List'
             },
             {
-                url: '/cart',
+                url : '/cart',
                 text: 'Your Cart'
             },
             {
-                url: '/checkout',
+                url : '/checkout',
                 text: 'Order now'
             },
         ]

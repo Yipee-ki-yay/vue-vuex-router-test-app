@@ -7,7 +7,7 @@
             <h1>Site</h1>
           </div>
           <div class="col col-sm-3">
-            <h1>In Cart:</h1>
+            <h1>In Cart: {{ lengthInCart}} </h1>
           </div>
         </div>
       </div>
@@ -16,15 +16,22 @@
       <div class="container">
         <div class="row">
           <div class="col col-sm-3 menu">
-            {{ menuList }}
             <ul class="list-group">
-              <li class="list-group-item">Product</li>
-              <li class="list-group-item">Cart</li>
-              <li class="list-group-item">Checkout</li>
+              <router-link v-for="(item, index) in menuList"
+                           :key="index"
+                           :to="item.url"
+                           tag="li"
+                           class="list-group-item"
+                           active-class="active"
+              >
+                <a>{{ item.text }}</a>
+              </router-link>
             </ul>
           </div>
           <div class="col col-sm-9">
-            <router-view></router-view>
+            <transition name="slide" mode="out-in">
+              <router-view></router-view>
+            </transition>
           </div>
         </div>
       </div>
@@ -33,14 +40,19 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
 
-export default {
-  computed: {
-    menuList() {
-      return this.$store.getters['products/items'];
-    }    
+  export default {
+
+    computed: {
+      ...mapGetters('menu', {
+        menuList: 'items'
+      }),
+      ...mapGetters('cart', {
+        lengthInCart: 'cnt'
+      }),
+    }
   }
-}
 </script>
 
 <style>
@@ -88,7 +100,7 @@ export default {
       transform: rotateY(0deg);
     }
     to {
-      transform: rotateY(90deg); 
+      transform: rotateY(90deg);
     }
   }
 </style>
